@@ -8,8 +8,8 @@ export const LayoutProvider = ({ children }: ChildContainerProps) => {
         ripple: false,
         inputStyle: 'outlined',
         menuMode: 'static',
-        colorScheme: 'light',
-        theme: 'lara-light-indigo',
+        colorScheme: 'dark',
+        theme: 'lara-dark-teal',
         scale: 14
     });
 
@@ -34,6 +34,10 @@ export const LayoutProvider = ({ children }: ChildContainerProps) => {
         }
     };
 
+    const changeTheme = (theme: string, colorScheme: string) => {
+        setLayoutConfig((prevLayoutConfig) => ({ ...prevLayoutConfig, theme, colorScheme }));
+    };
+
     const showProfileSidebar = () => {
         setLayoutState((prevLayoutState) => ({ ...prevLayoutState, profileSidebarVisible: !prevLayoutState.profileSidebarVisible }));
     };
@@ -52,7 +56,8 @@ export const LayoutProvider = ({ children }: ChildContainerProps) => {
         layoutState,
         setLayoutState,
         onMenuToggle,
-        showProfileSidebar
+        showProfileSidebar,
+        changeTheme
     };
 
     return <LayoutContext.Provider value={value}>{children}</LayoutContext.Provider>;
